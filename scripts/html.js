@@ -61,7 +61,7 @@ export function getHeader() {
                 <div class="headline">Pokedex</div>
             </div>
             <div class="right flex_center">
-                <input id="search" type="text">
+                <input id="search" type="text" oninput="filter()">
             </div>
         </div>    
     `;

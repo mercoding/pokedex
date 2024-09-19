@@ -1,3 +1,4 @@
+import { displayFilteredPokemon, showFilteredPokemons, filter } from './filter.js';
 import './html.js';
 import { getHeader, setPokemonEvoChain, setPokemonMain, setPokemonStats } from './html.js';
 import './pokedexapi.js';
