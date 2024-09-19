@@ -1,3 +1,76 @@
+import { getCard, getDetailedCard } from './html.js';
+import './main.js';
+import { colours, POKEMON_API, POKEMON_FORM, POKEMON_IMG, setDetailedCardCloseListener, showDetails } from './main.js';
+
+export async function getPokemonGroup(pokemon) {
+    let response = await fetch(POKEMON_FORM + pokemon);
+    let responseToJson = await response.json();
+    let groups = responseToJson.types;
+    if (response.ok) return groups;
+    return "Error - Pokemon not found";
+}
+
+
+export async function getColor(pokemon) {
+    let response = await fetch(POKEMON_FORM + pokemon);
+    let responseToJson = await response.json();
+    let name = responseToJson.types[0].type.name;
+    if (response.ok) return name;
+    return "Error - Pokemon not found";
+}
+
+
+export async function getPokemonName(pokemon) {
+    let response = await fetch(POKEMON_API + pokemon);
+    let responseToJson = await response.json();
+    let name = responseToJson.name.charAt(0).toUpperCase() + responseToJson.name.slice(1);
+    if (response.ok) return name;
+    return "Error - Pokemon not found";
+}
+
+
+export async function getPokemon(pokemon) {
+    let response = await fetch(POKEMON_API + pokemon);
+    let responseToJson = await response.json();
+    if (response.ok) return responseToJson;
+    return "Error - Pokemon not found";
+}
+
+
+export async function getPokemonImg(pokemon) {
+    let response = await fetch(POKEMON_API + pokemon);
+    if (response.ok) return POKEMON_IMG + pokemon + '.svg';
+    return 'Error - file not found'
+}
+
+export async function showGroups(card, num) {
+    let id = card + num + '_groups';
+    let query = document.getElementById(id);
+    query.innerHTML = '';
+    let group = await getPokemonGroup(num);
+    group.forEach(element => {
+        query.innerHTML += /*html*/`
+             <div class="icon ${element.type.name}">
+                <img src="./icons/${element.type.name}.svg"/>
+            </div>
+        `;
+    });
+}
+
+
+export async function showPokemons() {
+    let start = 1, end = 1025;
+    for (let index = 1; index < 6; index++) {
+        let img_src = await getPokemonImg(index);
+        let name = await getPokemonName(index);
+        document.getElementById('main_content').innerHTML += getCard(img_src, index, name);
+        let color = await getColor(index);
+        document.getElementById(`card${index}`).style.backgroundColor = colours[color];
+        await showGroups('card', index);
+    }
+}
+
+
 export async function getEvoChainUrl(pokemon) {
     let responsePokemon = await getPokemon(pokemon);
     let response = await fetch(responsePokemon.species.url);
@@ -30,7 +103,7 @@ export async function showDetailedCard(num) {
 }
 
 
-async function parseEvoChainToArray(evo_chain) {
+export async function parseEvoChainToArray(evo_chain) {
     let evoChain = [];
     let evoData = await evo_chain.chain;
 
@@ -48,3 +121,6 @@ async function parseEvoChainToArray(evo_chain) {
 
     return evoChain;
 }
+
+
+window.showDetailedCard = showDetailedCard;

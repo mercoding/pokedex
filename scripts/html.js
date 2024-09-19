@@ -1,3 +1,5 @@
+import { POKEMON_IMG } from "./main.js";
+
 export function setPokemonMain(pokemon) {
     document.getElementById('detailed-card-description').classList.remove('card_evo_chain');
 
@@ -31,6 +33,22 @@ export function setPokemonStats(pokemon) {
             </div>  
         `;
     });
+    return html;
+}
+
+export async function setPokemonEvoChain(evo_chain) {
+    let html = '';
+
+    for (let index = 0; index < evo_chain.length; index++) {
+        let h = POKEMON_IMG + evo_chain[index].species_id + '.svg';
+        html += /*html*/`
+            <img class="pokemon_evo_chain_img flex_center" src="${h}" alt="">  
+        `;
+        if(index < evo_chain.length - 1) html += /*html*/`<div>>></div>`;
+    }
+
+    document.getElementById('detailed-card-description').classList.add('card_evo_chain');
+
     return html;
 }
 
