@@ -33,16 +33,30 @@ export async function getFilteredPokemon(searchTerm) {
 }
 
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 export async function showFilteredPokemons(searchTerm) {
     const pokemonList = await getFilteredPokemon(searchTerm)
 
     for (let index = 0; index < pokemonList.length; index++) {
         let str = pokemonList[index].url.split('/');
         let id = str[str.length - 2];
-        let img_src = await getPokemonImg(id);
-        let name = await getPokemonName(id);
-        document.getElementById('main_content').innerHTML += getCard(img_src, id, name);
-        let color = await getColor(id);
+        if(document.getElementById(`card${id}`) === null) {
+            await setPokemonCard(id);
+        }
+    }
+}
+
+
+async function setPokemonCard(id) {
+    let img_src = await getPokemonImg(id);
+    let name = await getPokemonName(id);
+    document.getElementById('main_content').innerHTML += getCard(img_src, id, name);
+    let color = await getColor(id);
+    if(document.getElementById(`card${id}`) != null) {
         document.getElementById(`card${id}`).style.backgroundColor = colours[color];
         await showGroups('card', id);
     }
