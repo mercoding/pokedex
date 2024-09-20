@@ -1,4 +1,5 @@
 import { POKEMON_IMG } from "./main.js";
+import { openDataprotection, openImprint } from "./overlay.js";
 
 export function setPokemonMain(pokemon) {
     document.getElementById('detailed-card-description').classList.remove('card_evo_chain');
@@ -69,7 +70,7 @@ export function getHeader() {
 
 export function getCard(img_url, num, pokemon_name) {
     return /*html*/`
-       <div class="card" onclick="showDetailedCard(${num})">
+       <div class="card clickable" onclick="showDetailedCard(${num})">
             <div class="card-header">
                 #${num} ${pokemon_name}
             </div>
@@ -90,11 +91,26 @@ export function getDetailedCard(img_url, num, pokemon_name) {
             <div id="detailed-card${num}" class="card-body flex_center"><img src="${img_url}" class="card-img-top" alt="..."></div>
             <div id="detailed-card${num}_groups" class="card-footer">${pokemon_name}</div>
             <div class="card-tabs">
-                <div id="p_main_info" class="flex_center underline-grid border-right" onclick="switchPokemonInfo(0, ${num})">main</div>
-                <div id="p_stat_info" class="flex_center border-right" onclick="switchPokemonInfo(1, ${num})">stats</div>
-                <div id="p_evo_chain" class="flex_center" onclick="switchPokemonInfo(2, ${num})">evo chain</div>
+                <div id="p_main_info" class="flex_center underline-grid border-right clickable" onclick="switchPokemonInfo(0, ${num})">main</div>
+                <div id="p_stat_info" class="flex_center border-right clickable" onclick="switchPokemonInfo(1, ${num})">stats</div>
+                <div id="p_evo_chain" class="flex_center clickable" onclick="switchPokemonInfo(2, ${num})">evo chain</div>
             </div>
             <div id="detailed-card-description" class="card-body card-description-body card_evo_chain"></div>
         </div>
+    `;
+}
+
+
+export function getFooter() {
+    let header = document.querySelector('footer');
+    header.innerHTML = /*html*/`
+        <div class="footerContent">
+            <div class="left flex_center">
+                <div class="clickable" onclick="openImprint()">Imprint</div>
+            </div>
+            <div class="right flex_center">
+                <div class="clickable" onclick="openDataprotection()">Dataprotection</div>
+            </div>
+        </div>    
     `;
 }

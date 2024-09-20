@@ -1,6 +1,6 @@
 import { displayFilteredPokemon, showFilteredPokemons, filter } from './filter.js';
 import './html.js';
-import { getHeader, setPokemonEvoChain, setPokemonMain, setPokemonStats } from './html.js';
+import { getFooter, getHeader, setPokemonEvoChain, setPokemonMain, setPokemonStats } from './html.js';
 import './pokedexapi.js';
 import { getEvoChain, getPokemon, parseEvoChainToArray, showDetailedCard, showPokemons } from './pokedexapi.js';
 export const POKEMON_API = "https://pokeapi.co/api/v2/pokemon/";
@@ -24,6 +24,7 @@ async function init() {
         <div id="main_content" class="main_content"></div>  
     `;
     showPokemons();
+    getFooter();
 
     //showDetailedCard();
 }
@@ -54,7 +55,6 @@ export async function showDetails(card, num) {
     let id = card + '-description';
     let pokemon = await getPokemon(num);
     let evo_chain = await getEvoChain(num);
-    console.log(evo_chain);
     let evoChain = await parseEvoChainToArray(evo_chain);
     document.querySelector('.card-tabs > div').classList.remove('underline-grid');
     switch (pokemonInfoSwitch) {
