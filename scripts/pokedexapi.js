@@ -58,9 +58,32 @@ export async function showGroups(card, num) {
 }
 
 
+function checkIndexInput() {
+    let pokemonIndexInput = document.getElementById('pokemonIndexInput').value;
+    let clearStr, split = [], start, end; 
+    if(pokemonIndexInput.length > 2 && pokemonIndexInput.includes('/')) {
+        clearStr = pokemonIndexInput.replaceAll(' ', '');
+        split = clearStr.split('/');
+        start = parseInt(split[0]), end = parseInt(split[1]);
+        if(start < 1 || start > 1025) start = 1;
+        if(end < start || end < 1 || end > 1025) end = start + 4;   
+    }
+    else {
+        start = 1, end = 5;
+    }
+    split[0] = start;
+    split[1] = end;
+    return split; 
+}
+
+
 export async function showPokemons() {
-    let start = 1, end = 1025;
-    for (let index = 1; index < 6; index++) {
+    document.getElementById('main_content').innerHTML = '';
+    let range = checkIndexInput();
+    console.log(range);
+    
+
+    for (let index = range[0]; index <= range[1]; index++) {
         let img_src = await getPokemonImg(index);
         let name = await getPokemonName(index);
         document.getElementById('main_content').innerHTML += getCard(img_src, index, name);

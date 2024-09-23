@@ -274,6 +274,9 @@ textarea {
     max-height: 150px;
 }
 
+.font-color-w {
+    color: white;
+}
 
 @font-face {
     font-family: roboto;

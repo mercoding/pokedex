@@ -61,6 +61,10 @@ export function getHeader() {
                 <img class="pokeball_img mg_right_8px" src="img/pokeball-1594373_1280.png" alt="Pokemon_img">
                 <div class="headline">Pokedex</div>
             </div>
+            <div class="middle flex_center">
+                <div class="font-color-w ">Index: </div>
+                <input id="pokemonIndexInput" type="text" placeholder="1 / 5" oninput="filter()">
+            </div>
             <div class="right flex_center">
                 <input id="search" type="text" oninput="filter()">
             </div>
@@ -70,7 +74,7 @@ export function getHeader() {
 
 export function getCard(img_url, num, pokemon_name) {
     return /*html*/`
-       <div class="card clickable" onclick="showDetailedCard(${num})">
+       <div id="pokemon-${num}" class="card clickable" onclick="showDetailedCard(${num})">
             <div class="card-header">
                 #${num} ${pokemon_name}
             </div>
