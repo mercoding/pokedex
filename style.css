@@ -278,6 +278,10 @@ textarea {
     color: white;
 }
 
+.size-sm {
+    width: 50%;
+}
+
 @font-face {
     font-family: roboto;
     src: url("./fonts/Roboto/Roboto-Regular.ttf");

@@ -66,11 +66,13 @@ async function setPokemonCard(id) {
 export function filter() {
     let searchTerm = document.getElementById('search').value;
     if(searchTerm != '') {
+        document.getElementById('pokemonIndexInput').value = '';
         document.getElementById('main_content').innerHTML = '';
         showFilteredPokemons(searchTerm);
     }
     else {
-        showPokemons();
+        //document.getElementById('pokemonIndexInput').value = '';
+        showPokemons();  
     }
 }
 
