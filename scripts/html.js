@@ -100,7 +100,7 @@ export function getDetailedCard(img_url, num, pokemon_name) {
     return /*html*/`
        <div id="detailedCard" class="card detailed-card">
             <div class="card-header">#${num} ${pokemon_name}</div>
-            <div id="detailed-card${num}" class="card-body flex_center"><img src="${img_url}" class="card-img-top" alt="..."></div>
+            <div id="detailed-card${num}" class="card-body flex_center"><img src="${img_url}" class="card-img-top pokemon-img" alt="..."></div>
             <div id="detailed-card${num}_groups" class="card-footer">${pokemon_name}</div>
             <div class="card-tabs">
                 <div id="p_main_info" class="flex_center underline-grid border-right clickable" onclick="switchPokemonInfo(0, ${num})">main</div>
