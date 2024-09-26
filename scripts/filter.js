@@ -65,17 +65,26 @@ async function setPokemonCard(id) {
 
 export function filter() {
     let searchTerm = document.getElementById('search').value;
+    document.getElementById('pokemonIndexInput').value = '';
     if(searchTerm.length < 3) return;
     if(searchTerm !== '') {
         document.getElementById('pokemonIndexInput').value = '';
         document.getElementById('main_content').innerHTML = '';
         showFilteredPokemons(searchTerm);
-    }
+    } /*
     else {
         //document.getElementById('pokemonIndexInput').value = '';
         showPokemons();  
-    }
+    }*/
+}
+
+export function range() {
+    let indexTerm = document.getElementById('pokemonIndexInput').value;
+    document.getElementById('search').value = '';
+    if(indexTerm.length < 3) return;
+    showPokemons(); 
 }
 
 
 window.filter = filter;
+window.range = range;

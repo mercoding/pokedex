@@ -64,7 +64,7 @@ export function getHeader() {
             <div class="middle flex_center">
                 <div class="input-group input-group-sm size-sm">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Range</span>
-                    <input id="pokemonIndexInput" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" onchange='filter()' placeholder="1 / 5">
+                    <input id="pokemonIndexInput" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" oninput='range()' onchange='range()' placeholder="1 / 5">
                 </div>
                 <!--<div class="font-color-w ">Index: </div>
                 <input id="pokemonIndexInput" type="text" placeholder="1 / 5" oninput="filter()">-->
@@ -72,7 +72,7 @@ export function getHeader() {
             <div class="right flex_center">
                 <div class="input-group input-group-sm size-sm ">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
-                    <input id="search" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" oninput="filter()">
+                    <input id="search" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" oninput='filter()' onchange="filter()">
                 </div>
                 <!--<input id="search" type="text" oninput="filter()">-->
             </div>
