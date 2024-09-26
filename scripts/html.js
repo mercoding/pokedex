@@ -62,7 +62,7 @@ export function getHeader() {
                 <div class="headline">Pokedex</div>
             </div>
             <div class="middle flex_center">
-                <div class="input-group input-group-sm mb-3 size-sm">
+                <div class="input-group input-group-sm size-sm">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Range</span>
                     <input id="pokemonIndexInput" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" oninput="filter()" placeholder="1 / 5">
                 </div>
@@ -70,7 +70,7 @@ export function getHeader() {
                 <input id="pokemonIndexInput" type="text" placeholder="1 / 5" oninput="filter()">-->
             </div>
             <div class="right flex_center">
-                <div class="input-group input-group-sm mb-3 size-sm ">
+                <div class="input-group input-group-sm size-sm ">
                     <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
                     <input id="search" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" oninput="filter()">
                 </div>
@@ -87,7 +87,7 @@ export function getCard(img_url, num, pokemon_name) {
                 #${num} ${pokemon_name}
             </div>
             <div id="card${num}" class="card-body flex_center">
-                <img src="${img_url}" class="card-img-top" alt="...">
+                <img src="${img_url}" class="card-img-top pokemon-img" alt="...">
             </div>
             <div id="card${num}_groups" class="card-footer">
                 ${pokemon_name}

@@ -66,7 +66,7 @@ function checkIndexInput() {
         split = clearStr.split('/');
         start = parseInt(split[0]), end = parseInt(split[1]);
         if(start < 1 || start > 1025) start = 1;
-        if(end < start || end < 1 || end > 1025) end = start + 4;   
+        if(end < start || end < 2 || end > 1025 || end === '') end = start + 4;   
     }
     else {
         start = 1, end = 5;
@@ -79,9 +79,7 @@ function checkIndexInput() {
 
 export async function showPokemons() {
     document.getElementById('main_content').innerHTML = '';
-    let range = checkIndexInput();
-    console.log(range);
-    
+    let range = checkIndexInput();    
 
     for (let index = range[0]; index <= range[1]; index++) {
         let img_src = await getPokemonImg(index);

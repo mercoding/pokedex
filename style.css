@@ -38,8 +38,8 @@ main {
 
 .main_content {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 230px));
-    grid-template-rows: repeat(auto-fit, minmax(100px, 200px));
+    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-rows: repeat(auto-fit, 300px);
     gap: 64px;
     margin: 64px;
     justify-content: center;
@@ -116,9 +116,8 @@ footer {
 }
 
 .card {
-    margin: 16px;
-    height: 230px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
     background-color: darkslategray;
     color: white;
 }
@@ -135,6 +134,11 @@ footer {
 
 .card-img-top {
     height: 80px;
+}
+
+
+.pokemon-img:hover {
+    filter: drop-shadow(0px 0px 8px #000);
 }
 
 
@@ -423,6 +427,19 @@ h1 {
 }
 
 
+@media only screen and (max-width: 652px) {
+    
+    .headerContent {
+        grid-template-areas:    "left left"
+                                "middle right";
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 64px 32px;
+    }
+
+    .input-group {
+        width: 70%;
+    }
+}
 
 
 
