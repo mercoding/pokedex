@@ -40,10 +40,10 @@ function sleep(ms) {
 
 export async function showFilteredPokemons(searchTerm) {
     const pokemonList = await getFilteredPokemon(searchTerm)
-
     for (let index = 0; index < pokemonList.length; index++) {
         let str = pokemonList[index].url.split('/');
         let id = str[str.length - 2];
+        
         if(document.getElementById(`card${id}`) === null) {
             await setPokemonCard(id);
         }
@@ -65,7 +65,8 @@ async function setPokemonCard(id) {
 
 export function filter() {
     let searchTerm = document.getElementById('search').value;
-    if(searchTerm != '') {
+    if(searchTerm.length < 3) return;
+    if(searchTerm !== '') {
         document.getElementById('pokemonIndexInput').value = '';
         document.getElementById('main_content').innerHTML = '';
         showFilteredPokemons(searchTerm);

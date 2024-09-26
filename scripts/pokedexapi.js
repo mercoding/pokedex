@@ -78,8 +78,8 @@ function checkIndexInput() {
 
 
 export async function showPokemons() {
+    let range = checkIndexInput();
     document.getElementById('main_content').innerHTML = '';
-    let range = checkIndexInput();    
 
     for (let index = range[0]; index <= range[1]; index++) {
         let img_src = await getPokemonImg(index);

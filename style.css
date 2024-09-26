@@ -63,6 +63,7 @@ main {
     position: absolute;
     top: 0;
     left: 0;
+    filter: drop-shadow(0px 0px 8px #000);
 }
 
 
@@ -120,11 +121,12 @@ footer {
     width: 300px;
     background-color: darkslategray;
     color: white;
+    filter: drop-shadow(0px 0px 8px #000);
 }
 
 .detailed-card {
     height: 400px;
-    width: 300px;
+    width: 400px;
 }
 
 .detailed_card {
