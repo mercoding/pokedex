@@ -67,15 +67,10 @@ export function filter() {
     let searchTerm = document.getElementById('search').value;
     document.getElementById('pokemonIndexInput').value = '';
     if(searchTerm.length < 3) return;
-    if(searchTerm !== '') {
-        document.getElementById('pokemonIndexInput').value = '';
-        document.getElementById('main_content').innerHTML = '';
-        showFilteredPokemons(searchTerm);
-    } /*
-    else {
-        //document.getElementById('pokemonIndexInput').value = '';
-        showPokemons();  
-    }*/
+    document.getElementById('pokemonIndexInput').value = '';
+    document.getElementById('main_content').innerHTML = '';
+    showFilteredPokemons(searchTerm);
+
 }
 
 export function range() {
